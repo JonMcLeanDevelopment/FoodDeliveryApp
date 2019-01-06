@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (4.8.0)
+  - SnapKit (4.2.0)
+  - SwiftHEXColors (1.1.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - SnapKit
+  - SwiftHEXColors
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - SnapKit
+    - SwiftHEXColors
+
+SPEC CHECKSUMS:
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SwiftHEXColors: 7f9f7e6bdce888d821e11749279733e5ddff5f51
+
+PODFILE CHECKSUM: 9aa3438181ac7b90dc81388204ac06ca4d560675
+
+COCOAPODS: 1.5.3
