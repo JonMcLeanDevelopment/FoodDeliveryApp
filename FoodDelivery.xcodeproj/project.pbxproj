@@ -14,6 +14,9 @@
 		FC4ADAF821E22AF2004CE8CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC4ADAF621E22AF2004CE8CA /* LaunchScreen.storyboard */; };
 		FC4ADB0421E22B51004CE8CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4ADB0321E22B51004CE8CA /* LoginViewController.swift */; };
 		FC4ADB0621E22C12004CE8CA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4ADB0521E22C12004CE8CA /* Colors.swift */; };
+		FC4ADB0821E22DEC004CE8CA /* UIImageView+BlurEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4ADB0721E22DEC004CE8CA /* UIImageView+BlurEffect.swift */; };
+		FC4ADB0A21E22FB7004CE8CA /* UIViewController+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4ADB0921E22FB7004CE8CA /* UIViewController+HideKeyboard.swift */; };
+		FCD30C6921E2EC370000BC76 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD30C6821E2EC370000BC76 /* RoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		FC4ADAF921E22AF2004CE8CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC4ADB0321E22B51004CE8CA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FC4ADB0521E22C12004CE8CA /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		FC4ADB0721E22DEC004CE8CA /* UIImageView+BlurEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+BlurEffect.swift"; sourceTree = "<group>"; };
+		FC4ADB0921E22FB7004CE8CA /* UIViewController+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+HideKeyboard.swift"; sourceTree = "<group>"; };
+		FCD30C6821E2EC370000BC76 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				FC4ADB0521E22C12004CE8CA /* Colors.swift */,
+				FCD30C6821E2EC370000BC76 /* RoundedButton.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -119,6 +126,8 @@
 		FC4ADB0221E22B26004CE8CA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FC4ADB0721E22DEC004CE8CA /* UIImageView+BlurEffect.swift */,
+				FC4ADB0921E22FB7004CE8CA /* UIViewController+HideKeyboard.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -248,6 +257,9 @@
 			files = (
 				FC4ADB0421E22B51004CE8CA /* LoginViewController.swift in Sources */,
 				FC4ADB0621E22C12004CE8CA /* Colors.swift in Sources */,
+				FC4ADB0821E22DEC004CE8CA /* UIImageView+BlurEffect.swift in Sources */,
+				FC4ADB0A21E22FB7004CE8CA /* UIViewController+HideKeyboard.swift in Sources */,
+				FCD30C6921E2EC370000BC76 /* RoundedButton.swift in Sources */,
 				FC4ADAF321E22AF1004CE8CA /* FoodDelivery.xcdatamodeld in Sources */,
 				FC4ADAEB21E22AF1004CE8CA /* AppDelegate.swift in Sources */,
 			);
