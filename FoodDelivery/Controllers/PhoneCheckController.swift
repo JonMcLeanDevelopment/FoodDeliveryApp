@@ -40,7 +40,7 @@ class PhoneCheckController: UIViewController, UITextFieldDelegate {
         backgroundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
         backgroundImageView.image = UIImage(named: "background")!
         backgroundImageView.contentMode = .scaleAspectFill
-        //backgroundImageView.addBlurView(style: .light)
+        backgroundImageView.addBlurView(style: .light)
         self.view.addSubview(backgroundImageView)
         
         detailsView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height / 3 - 70))
@@ -143,7 +143,7 @@ class PhoneCheckController: UIViewController, UITextFieldDelegate {
             make.height.equalTo(phoneNumberLabel.bounds.height)
             //make.centerX.equalTo(self.detailsView)
             make.top.equalTo(phoneNumberField.snp.top).offset(3)
-            make.left.equalTo(phoneNumberField.snp.left).offset(10)
+            make.left.equalTo(phoneNumberField.snp.left).offset(6)
         }
         
         nextButton.snp.makeConstraints { (make) in
@@ -201,6 +201,12 @@ class PhoneCheckController: UIViewController, UITextFieldDelegate {
                     
                     if code == 306 { // No phone number found
                         print("No Phone")
+                        
+                        let vc = RegisterAccountController()
+                        vc.phoneNumber = self.phoneNumberField.text!
+                        
+                        self.navigationController?.pushViewController(vc, animated: true)
+                        
                     }else if code == 200 { // Phone number found
                         print("Phone Number")
                     }else {
@@ -208,6 +214,8 @@ class PhoneCheckController: UIViewController, UITextFieldDelegate {
                         return;
                     }
                 }
+            }else {
+                errorLabel.text = "Please enter a valid phone number"
             }
         }
     }

@@ -17,9 +17,18 @@ class NetworkManager {
     
     func checkPhoneNumber(phone: String, completionHandler: @escaping NetworkResponse) {
         let url = baseUrl + "auth/user/check/phone"
-        print("URL: \(url)")
         let params: Parameters = ["phone": phone]
         
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseString { (response) in
+            if let jsonString = response.result.value {
+                completionHandler(jsonString)
+            }
+        }
+    }
+    
+    func registerUser(phoneNumber: String, fullName: String, email: String, password: String, completionHandler: @escaping NetworkResponse) {
+        let url = baseUrl + "auth/user/register"
+        let params: Parameters = ["phone" : phoneNumber, "fullName": fullName, "email": email, "password": password]
         Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseString { (response) in
             if let jsonString = response.result.value {
                 completionHandler(jsonString)
