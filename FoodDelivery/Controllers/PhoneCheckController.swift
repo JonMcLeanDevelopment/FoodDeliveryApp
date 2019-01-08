@@ -209,6 +209,11 @@ class PhoneCheckController: UIViewController, UITextFieldDelegate {
                         
                     }else if code == 200 { // Phone number found
                         print("Phone Number")
+                        
+                        let vc = LoginViewController()
+                        vc.phoneNumber = self.phoneNumberField.text!
+                        
+                        self.navigationController?.pushViewController(vc, animated: true)
                     }else {
                         self.errorLabel.text = "There was a problem while contacting server. Please try again later!"
                         return;

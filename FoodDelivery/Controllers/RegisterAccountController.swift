@@ -175,6 +175,7 @@ class RegisterAccountController: UIViewController, UITextFieldDelegate {
         errorLabel.text = ""
         errorLabel.textColor = Colors.Theme.redColor
         errorLabel.font = UIFont(name: "Courier New", size: 12)
+        errorLabel.textAlignment = .center
         self.view.addSubview(errorLabel)
         
     }
@@ -297,8 +298,9 @@ class RegisterAccountController: UIViewController, UITextFieldDelegate {
     
     @objc func registerAccount() {
         self.hideKeyboard()
+        self.errorLabel.text = ""
         if(emailField.text == "" || emailField.text == nil || phoneField.text == "" || phoneField.text == nil || fullNameField.text == "" || fullNameField.text == nil || passwordField.text == "" || passwordField.text == nil || confirmField.text == "" || confirmField.text == nil) {
-            self.errorLabel.text = "Please fill out all fields!"
+            self.errorLabel.text = "Please fill out all fields"
             return;
         }
         
@@ -337,7 +339,7 @@ class RegisterAccountController: UIViewController, UITextFieldDelegate {
             }else {
                 
                 let vc = LoginViewController()
-                vc.phoneNumber = phoneNumber
+                vc.phoneNumber = self.phoneNumber
                 
                 self.navigationController?.pushViewController(vc, animated: true)
             }
