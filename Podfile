@@ -9,5 +9,6 @@ target 'FoodDelivery' do
   pod 'SnapKit'
   pod 'Alamofire'
   pod 'SwiftHEXColors'
+  pod 'SwiftyJSON'
 
 end

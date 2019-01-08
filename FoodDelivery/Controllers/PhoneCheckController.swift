@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class PhoneCheckController: UIViewController, UITextFieldDelegate {
     
     var backgroundImageView: UIImageView = UIImageView()
     
@@ -21,6 +22,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var errorLabel: UILabel = UILabel()
     
     var nextButton: RoundedButton = RoundedButton()
+    
+    let network = NetworkManager()
     
     
     override func viewDidLoad() {
@@ -182,18 +185,38 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }else {
             print("Checking phone number")
             if(phoneNumberField.text?.range(of: "^[0-9]*$", options: .regularExpression, range: nil, locale: nil) != nil) {
-                // Make api call to see if register or not
-                var isRegistered: Bool = false
                 
-                if(isRegistered) {
-                    // sign in page
-                }else {
-                    // sign up page
+                network.checkPhoneNumber(phone: phoneNumberField.text!) { (response) in
+                    print(response)
+                    let json = JSON(parseJSON: response as! String)
+                    
+                    if json == nil {
+                        self.errorLabel.text = "There was a problem while contacting server. Please try again later!"
+                        return;
+                    }
+                    
+                    let dic = json.dictionaryObject
+                    print(dic)
+                    let code = dic!["code"] as! Int
+                    
+                    if code == 306 { // No phone number found
+                        print("No Phone")
+                    }else if code == 200 { // Phone number found
+                        print("Phone Number")
+                    }else {
+                        self.errorLabel.text = "There was a problem while contacting server. Please try again later!"
+                        return;
+                    }
                 }
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
+        self.hideKeyboard()
         
+        return true
     }
     
 }

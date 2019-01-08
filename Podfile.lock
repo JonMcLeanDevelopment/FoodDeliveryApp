@@ -2,23 +2,27 @@ PODS:
   - Alamofire (4.8.0)
   - SnapKit (4.2.0)
   - SwiftHEXColors (1.1.2)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
   - SnapKit
   - SwiftHEXColors
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - SnapKit
     - SwiftHEXColors
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftHEXColors: 7f9f7e6bdce888d821e11749279733e5ddff5f51
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 9aa3438181ac7b90dc81388204ac06ca4d560675
+PODFILE CHECKSUM: 905dd86376cf9a1584674cfcd13c08844c127a5a
 
 COCOAPODS: 1.5.3

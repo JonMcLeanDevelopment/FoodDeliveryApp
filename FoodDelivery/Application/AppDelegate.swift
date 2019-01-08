@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let vc = LoginViewController()
+        let vc = PhoneCheckController()
         let nav = UINavigationController()
         nav.viewControllers.append(vc)
         
