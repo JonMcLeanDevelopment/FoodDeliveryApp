@@ -46,4 +46,15 @@ class NetworkManager {
         }
     }
     
+    func getPlaces(latitude: Double, longitude: Double, countryCode: String, city: String, completionHandler: @escaping NetworkResponse) {
+        let url = baseUrl + "places/retrieve"
+        print(url)
+        let params: Parameters = ["latitude": latitude, "longitude": longitude, "countryCode": countryCode, "city": city]
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseString { (response) in
+            if let json = response.result.value {
+                completionHandler(json)
+            }
+        }
+    }
+    
 }

@@ -9,16 +9,22 @@
 import UIKit
 import CoreData
 import SnapKit
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    let apiKey = "AIzaSyDqQ-TGQK9U-OdcvpSNa8Bs8UPk0hKlSc8" // Google Maps
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let vc = PhoneCheckController()
+        GMSServices.provideAPIKey(apiKey)
+        GMSPlacesClient.provideAPIKey(apiKey)
+        
+        let vc = HomeTabBarController()
         let nav = UINavigationController()
         nav.viewControllers.append(vc)
         

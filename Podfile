@@ -10,5 +10,7 @@ target 'FoodDelivery' do
   pod 'Alamofire'
   pod 'SwiftHEXColors'
   pod 'SwiftyJSON'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 
 end

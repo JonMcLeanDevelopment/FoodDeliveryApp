@@ -33,7 +33,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.backgroundColor = UIColor.white
         
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(popView))
         
         logoView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 150))
         logoView.image = UIImage(named: "logo")!
@@ -167,10 +166,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @objc func popView() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.hideKeyboard()
         return true
@@ -205,6 +200,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 // move to home views
                 print("Logged in")
+                
+                self.navigationController?.pushViewController(HomeTabBarController(), animated: true)
                 
             }else {
                 self.errorLabel.text = "There was a problem while contacting server. Please try again later!"

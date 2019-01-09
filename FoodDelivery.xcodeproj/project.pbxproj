@@ -8,9 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		8F2F4399B7B9C5348229BFFC /* Pods_FoodDelivery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865C1D6F4A5E08EAEFDF1C03 /* Pods_FoodDelivery.framework */; };
+		FC215EB921E59B370010ED42 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC215EB821E59B370010ED42 /* LocationHelper.swift */; };
 		FC4031C921E42CAA00610E42 /* RegisterAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4031C821E42CAA00610E42 /* RegisterAccountController.swift */; };
 		FC4031CC21E4391D00610E42 /* ValidUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4031CB21E4391D00610E42 /* ValidUtil.swift */; };
 		FC4031CE21E4438E00610E42 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4031CD21E4438E00610E42 /* LoginViewController.swift */; };
+		FC4031D221E46F0C00610E42 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4031D121E46F0C00610E42 /* HomeTabBarController.swift */; };
+		FC4031D421E46FBF00610E42 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4031D321E46FBF00610E42 /* PlacesViewController.swift */; };
+		FC4031D721E473A300610E42 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4031D621E473A300610E42 /* Place.swift */; };
 		FC4ADAEB21E22AF1004CE8CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4ADAEA21E22AF1004CE8CA /* AppDelegate.swift */; };
 		FC4ADAF321E22AF1004CE8CA /* FoodDelivery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC4ADAF121E22AF1004CE8CA /* FoodDelivery.xcdatamodeld */; };
 		FC4ADAF521E22AF2004CE8CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC4ADAF421E22AF2004CE8CA /* Assets.xcassets */; };
@@ -27,9 +31,14 @@
 		35B9B3232E75BF1588FDF716 /* Pods-FoodDelivery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodDelivery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodDelivery/Pods-FoodDelivery.debug.xcconfig"; sourceTree = "<group>"; };
 		865C1D6F4A5E08EAEFDF1C03 /* Pods_FoodDelivery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodDelivery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E043CC20D1054E887852E8DD /* Pods-FoodDelivery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodDelivery.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodDelivery/Pods-FoodDelivery.release.xcconfig"; sourceTree = "<group>"; };
+		FC215EB821E59B370010ED42 /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
+		FC215EBA21E5A1B10010ED42 /* GPXTest.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GPXTest.gpx; sourceTree = "<group>"; };
 		FC4031C821E42CAA00610E42 /* RegisterAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAccountController.swift; sourceTree = "<group>"; };
 		FC4031CB21E4391D00610E42 /* ValidUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidUtil.swift; sourceTree = "<group>"; };
 		FC4031CD21E4438E00610E42 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FC4031D121E46F0C00610E42 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		FC4031D321E46FBF00610E42 /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
+		FC4031D621E473A300610E42 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		FC4ADAE721E22AF1004CE8CA /* FoodDelivery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodDelivery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC4ADAEA21E22AF1004CE8CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC4ADAF221E22AF1004CE8CA /* FoodDelivery.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodDelivery.xcdatamodel; sourceTree = "<group>"; };
@@ -77,8 +86,17 @@
 			isa = PBXGroup;
 			children = (
 				FC4031CB21E4391D00610E42 /* ValidUtil.swift */,
+				FC215EB821E59B370010ED42 /* LocationHelper.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		FC4031D521E4726A00610E42 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FC4031D621E473A300610E42 /* Place.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FC4ADADE21E22AF1004CE8CA = {
@@ -108,10 +126,12 @@
 				FC4ADB0221E22B26004CE8CA /* Extensions */,
 				FCE18D1B21E377EE007EDD64 /* Network */,
 				FC4031CA21E4390600610E42 /* Utils */,
+				FC4031D521E4726A00610E42 /* Models */,
 				FC4ADAF421E22AF2004CE8CA /* Assets.xcassets */,
 				FC4ADAF621E22AF2004CE8CA /* LaunchScreen.storyboard */,
 				FC4ADAF921E22AF2004CE8CA /* Info.plist */,
 				FC4ADAF121E22AF1004CE8CA /* FoodDelivery.xcdatamodeld */,
+				FC215EBA21E5A1B10010ED42 /* GPXTest.gpx */,
 			);
 			path = FoodDelivery;
 			sourceTree = "<group>";
@@ -130,6 +150,8 @@
 				FC4ADB0321E22B51004CE8CA /* PhoneCheckController.swift */,
 				FC4031C821E42CAA00610E42 /* RegisterAccountController.swift */,
 				FC4031CD21E4438E00610E42 /* LoginViewController.swift */,
+				FC4031D121E46F0C00610E42 /* HomeTabBarController.swift */,
+				FC4031D321E46FBF00610E42 /* PlacesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -172,6 +194,7 @@
 				FC4ADAE421E22AF1004CE8CA /* Frameworks */,
 				FC4ADAE521E22AF1004CE8CA /* Resources */,
 				4940C9B293FEFC979592A485 /* [CP] Embed Pods Frameworks */,
+				7B3887C6718F66A70EA77E9C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -256,6 +279,30 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodDelivery/Pods-FoodDelivery-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7B3887C6718F66A70EA77E9C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FoodDelivery/Pods-FoodDelivery-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodDelivery/Pods-FoodDelivery-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9DB4C843B00CCF4AC00CBCE4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -288,9 +335,13 @@
 				FC4ADB0421E22B51004CE8CA /* PhoneCheckController.swift in Sources */,
 				FC4ADB0621E22C12004CE8CA /* Colors.swift in Sources */,
 				FC4031CC21E4391D00610E42 /* ValidUtil.swift in Sources */,
+				FC4031D221E46F0C00610E42 /* HomeTabBarController.swift in Sources */,
 				FC4ADB0821E22DEC004CE8CA /* UIImageView+BlurEffect.swift in Sources */,
+				FC4031D721E473A300610E42 /* Place.swift in Sources */,
 				FC4ADB0A21E22FB7004CE8CA /* UIViewController+HideKeyboard.swift in Sources */,
 				FCE18D1D21E377FC007EDD64 /* NetworkManager.swift in Sources */,
+				FC4031D421E46FBF00610E42 /* PlacesViewController.swift in Sources */,
+				FC215EB921E59B370010ED42 /* LocationHelper.swift in Sources */,
 				FCD30C6921E2EC370000BC76 /* RoundedButton.swift in Sources */,
 				FC4031C921E42CAA00610E42 /* RegisterAccountController.swift in Sources */,
 				FC4ADAF321E22AF1004CE8CA /* FoodDelivery.xcdatamodeld in Sources */,

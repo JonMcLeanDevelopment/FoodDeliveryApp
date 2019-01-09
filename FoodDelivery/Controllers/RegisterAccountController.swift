@@ -42,7 +42,6 @@ class RegisterAccountController: UIViewController, UITextFieldDelegate {
         self.view.backgroundColor = UIColor.white
         
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "back")!, style: .plain, target: self, action: #selector(popView))
         
         logoView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 150))
         logoView.image = UIImage(named: "logo")!
@@ -285,10 +284,6 @@ class RegisterAccountController: UIViewController, UITextFieldDelegate {
             make.top.equalTo(registerButton.snp.bottom).offset(15)
             make.centerX.equalTo(self.view)
         }
-    }
-    
-    @objc func popView() {
-        self.navigationController?.popViewController(animated: true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
