@@ -26,8 +26,14 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let loc = LocationHelper()
     let network = NetworkManager()
     
+    lazy var geocoder = CLGeocoder()
+    
+    var countryCode: String = ""
+    var stateCode: String = ""
+    
     override func viewDidLoad() {
         self.locationManager.delegate = self
+        
         
         
         
@@ -46,6 +52,11 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidAppear(animated)
         layoutViews()
         self.navigationItem.title = "Places"
+        
+        
+        
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,8 +112,11 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if(lastLoadLocation == nil) {
             lastLoadLocation = locations[0]
             
-            network.getPlaces(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude, countryCode: "AU", city: "Canberra") { (response) in
-                print(response)
+            geocoder.reverseGeocodeLocation(locations[0]) { (placemarks, error) in
+                self.processGeocode(placemarks: placemarks, error: error)
+                self.network.getPlaces(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude, countryCode: self.countryCode, state: self.stateCode) { (response) in
+                    print(response)
+                }
             }
             
         }else {
@@ -118,11 +132,15 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print(distance)
             
             if(distance > 0.5) { // greater than 500m difference
-                print("update")
-                lastLoadLocation = locations[0]
                 
-                network.getPlaces(latitude: newLatitude, longitude: newLongitude, countryCode: "AU", city: "Canberra") { (response) in
-                    print(response)
+                geocoder.reverseGeocodeLocation(locations[0]) { (placemarks, error) in
+                    self.processGeocode(placemarks: placemarks, error: error)
+                    print("update")
+                    self.lastLoadLocation = locations[0]
+                    
+                    self.network.getPlaces(latitude: newLatitude, longitude: newLongitude, countryCode: self.countryCode, state: self.stateCode) { (response) in
+                        print(response)
+                    }
                 }
                 
             }
@@ -150,5 +168,19 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tableView.reloadData()
         }
     }
+    
+    func processGeocode(placemarks: [CLPlacemark]?, error: Error?){
+        if placemarks?.count == 0 {
+            return;
+        }
+        
+        let placemark = placemarks![0]
+        self.countryCode = placemark.isoCountryCode!
+        self.stateCode = placemark.administrativeArea!
+        
+        print(countryCode)
+        print(stateCode)
+    }
+    
     
 }

@@ -17,12 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    let apiKey = "AIzaSyDqQ-TGQK9U-OdcvpSNa8Bs8UPk0hKlSc8" // Google Maps
+    static let apiKey = "AIzaSyDqQ-TGQK9U-OdcvpSNa8Bs8UPk0hKlSc8" // Google Maps
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        GMSServices.provideAPIKey(apiKey)
-        GMSPlacesClient.provideAPIKey(apiKey)
+        GMSServices.provideAPIKey(AppDelegate.apiKey)
+        GMSPlacesClient.provideAPIKey(AppDelegate.apiKey)
         
         let vc = HomeTabBarController()
         let nav = UINavigationController()
