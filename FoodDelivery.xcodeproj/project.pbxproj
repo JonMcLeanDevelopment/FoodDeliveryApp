@@ -15,6 +15,7 @@
 		FC4031D221E46F0C00610E42 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4031D121E46F0C00610E42 /* HomeTabBarController.swift */; };
 		FC4031D421E46FBF00610E42 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4031D321E46FBF00610E42 /* PlacesViewController.swift */; };
 		FC4031D721E473A300610E42 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4031D621E473A300610E42 /* Place.swift */; };
+		FC471F4221E718F100B70A6F /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC471F4121E718F100B70A6F /* RestaurantCell.swift */; };
 		FC4ADAEB21E22AF1004CE8CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4ADAEA21E22AF1004CE8CA /* AppDelegate.swift */; };
 		FC4ADAF321E22AF1004CE8CA /* FoodDelivery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC4ADAF121E22AF1004CE8CA /* FoodDelivery.xcdatamodeld */; };
 		FC4ADAF521E22AF2004CE8CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC4ADAF421E22AF2004CE8CA /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		FC4031D121E46F0C00610E42 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		FC4031D321E46FBF00610E42 /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		FC4031D621E473A300610E42 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		FC471F4121E718F100B70A6F /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 		FC4ADAE721E22AF1004CE8CA /* FoodDelivery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodDelivery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC4ADAEA21E22AF1004CE8CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC4ADAF221E22AF1004CE8CA /* FoodDelivery.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodDelivery.xcdatamodel; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				FC4ADB0521E22C12004CE8CA /* Colors.swift */,
 				FCD30C6821E2EC370000BC76 /* RoundedButton.swift */,
+				FC471F4121E718F100B70A6F /* RestaurantCell.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				FC4031D721E473A300610E42 /* Place.swift in Sources */,
 				FC4ADB0A21E22FB7004CE8CA /* UIViewController+HideKeyboard.swift in Sources */,
 				FCE18D1D21E377FC007EDD64 /* NetworkManager.swift in Sources */,
+				FC471F4221E718F100B70A6F /* RestaurantCell.swift in Sources */,
 				FC4031D421E46FBF00610E42 /* PlacesViewController.swift in Sources */,
 				FC215EB921E59B370010ED42 /* LocationHelper.swift in Sources */,
 				FCD30C6921E2EC370000BC76 /* RoundedButton.swift in Sources */,

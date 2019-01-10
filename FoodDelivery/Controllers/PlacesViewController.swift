@@ -14,11 +14,13 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var tableView: UITableView = UITableView()
     
-    var data: Array<Place> = []
+    var placesArray: Array<Place> = []
     
     let locationManager = CLLocationManager()
     
     var locationEnabled: Bool = true
+    var noData: Bool = false
+    var serverError = false
     
     var lastLoadLocation: CLLocation?
     var shouldLoadForNewLocation: Bool = true
@@ -33,9 +35,6 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         self.locationManager.delegate = self
-        
-        
-        
         
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
@@ -52,11 +51,6 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidAppear(animated)
         layoutViews()
         self.navigationItem.title = "Places"
-        
-        
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,13 +70,29 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("Location Enabled: \(locationEnabled)")
-        if(locationEnabled) {
-            tableView.backgroundView = nil
-            tableView.separatorStyle = .singleLine
-            return 1
-        }else {
-            
+        if(noData) {
+            let noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text = "No places found for your region"
+            noDataLabel.textColor = Colors.Theme.redColor
+            noDataLabel.font = UIFont(name: "Courier New", size: 14)
+            noDataLabel.textAlignment = .center
+            tableView.backgroundView = noDataLabel
+            tableView.separatorStyle = .none
+            return 0
+        }
+        
+        if(serverError) {
+            let serverError = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            serverError.text = "There was a problem with the server"
+            serverError.textColor = Colors.Theme.redColor
+            serverError.font = UIFont(name: "Courier New", size: 14)
+            serverError.textAlignment = .center
+            tableView.backgroundView = serverError
+            tableView.separatorStyle = .none
+            return 0
+        }
+        
+        if(!locationEnabled) {
             let noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
             noDataLabel.text = "Location Services must be enabled!"
             noDataLabel.textColor = Colors.Theme.redColor
@@ -93,15 +103,19 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             return 0
         }
+        
+        tableView.backgroundView = nil
+        tableView.separatorStyle = .singleLine
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return placesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
-        
+        cell.textLabel?.text = placesArray[indexPath.row].name
         return cell
     }
     
@@ -116,6 +130,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.processGeocode(placemarks: placemarks, error: error)
                 self.network.getPlaces(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude, countryCode: self.countryCode, state: self.stateCode) { (response) in
                     print(response)
+                    self.updateData(response: response as! String)
                 }
             }
             
@@ -140,6 +155,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     self.network.getPlaces(latitude: newLatitude, longitude: newLongitude, countryCode: self.countryCode, state: self.stateCode) { (response) in
                         print(response)
+                        self.updateData(response: response as! String)
                     }
                 }
                 
@@ -180,6 +196,50 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         print(countryCode)
         print(stateCode)
+    }
+    
+    func updateData(response: String) {
+        
+        self.placesArray = []
+        
+        let json = JSON(parseJSON: response)
+        
+        if json == nil {
+            self.serverError = true
+            self.tableView.reloadData()
+            return;
+        }
+        
+        let dic = json.dictionaryObject
+        let code = dic!["code"] as! Int
+        
+        if code == 421 {
+            self.noData = true
+            self.tableView.reloadData()
+            return;
+        }else if code != 200 {
+            self.serverError = true
+            self.tableView.reloadData()
+            return
+        }
+        
+        let data = dic!["data"] as! Array<Any>
+        print(data)
+        
+        for i in data {
+            let d = i as! Dictionary<String, Any>
+            
+            let name = d["name"] as! String
+            let longitude = d["longitude"] as! Double
+            let distance = d["distance"] as! Double
+            let latitude = d["latitude"] as! Double
+            let uuid = d["uuid"] as! String
+            
+            let place = Place(name: name, latitude: latitude, longitude: longitude, uniqueId: uuid, countryCode: self.countryCode, state: self.stateCode)
+            self.placesArray.append(place)
+            self.tableView.reloadData()
+        }
+        
     }
     
     
