@@ -33,15 +33,18 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var countryCode: String = ""
     var stateCode: String = ""
     
+    let cellIdentifier = "RestaurantCell"
+    
     override func viewDidLoad() {
-        self.locationManager.delegate = self
-        
         super.viewDidLoad()
+        self.locationManager.delegate = self
         self.view.backgroundColor = UIColor.white
-        self.title = "Places"
+        self.locationManager.distanceFilter = 20
+        
         
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height - (self.navigationController!.navigationBar.bounds.height + self.tabBarController!.tabBar.bounds.height)))
         tableView.backgroundColor = UIColor.white
+        tableView.register(UINib(nibName: "RestaurantCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         self.view.addSubview(tableView)
@@ -50,7 +53,8 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         layoutViews()
-        self.navigationItem.title = "Places"
+        self.title = "Places"
+        self.tabBarController?.title = "Places"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,9 +118,19 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
+        /*let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
         cell.textLabel?.text = placesArray[indexPath.row].name
+        return cell*/
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RestaurantCell
+        cell.placeImageView.image = UIImage(named: "logo")!
+        cell.nameLabel.text = placesArray[indexPath.row].name
+        cell.deliveryTimeLabel.text = "Idk"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 312
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

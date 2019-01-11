@@ -15,7 +15,6 @@
 		FC4031D221E46F0C00610E42 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4031D121E46F0C00610E42 /* HomeTabBarController.swift */; };
 		FC4031D421E46FBF00610E42 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4031D321E46FBF00610E42 /* PlacesViewController.swift */; };
 		FC4031D721E473A300610E42 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4031D621E473A300610E42 /* Place.swift */; };
-		FC471F4221E718F100B70A6F /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC471F4121E718F100B70A6F /* RestaurantCell.swift */; };
 		FC4ADAEB21E22AF1004CE8CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4ADAEA21E22AF1004CE8CA /* AppDelegate.swift */; };
 		FC4ADAF321E22AF1004CE8CA /* FoodDelivery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC4ADAF121E22AF1004CE8CA /* FoodDelivery.xcdatamodeld */; };
 		FC4ADAF521E22AF2004CE8CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC4ADAF421E22AF2004CE8CA /* Assets.xcassets */; };
@@ -26,6 +25,8 @@
 		FC4ADB0A21E22FB7004CE8CA /* UIViewController+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4ADB0921E22FB7004CE8CA /* UIViewController+HideKeyboard.swift */; };
 		FCD30C6921E2EC370000BC76 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD30C6821E2EC370000BC76 /* RoundedButton.swift */; };
 		FCE18D1D21E377FC007EDD64 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE18D1C21E377FC007EDD64 /* NetworkManager.swift */; };
+		FCF038CE21E8542B001A52F1 /* RestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF038CD21E8542B001A52F1 /* RestaurantCell.xib */; };
+		FCF038D021E85535001A52F1 /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF038CF21E85535001A52F1 /* RestaurantCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +41,6 @@
 		FC4031D121E46F0C00610E42 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		FC4031D321E46FBF00610E42 /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		FC4031D621E473A300610E42 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
-		FC471F4121E718F100B70A6F /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 		FC4ADAE721E22AF1004CE8CA /* FoodDelivery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodDelivery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC4ADAEA21E22AF1004CE8CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC4ADAF221E22AF1004CE8CA /* FoodDelivery.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodDelivery.xcdatamodel; sourceTree = "<group>"; };
@@ -53,6 +53,8 @@
 		FC4ADB0921E22FB7004CE8CA /* UIViewController+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+HideKeyboard.swift"; sourceTree = "<group>"; };
 		FCD30C6821E2EC370000BC76 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		FCE18D1C21E377FC007EDD64 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FCF038CD21E8542B001A52F1 /* RestaurantCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantCell.xib; sourceTree = "<group>"; };
+		FCF038CF21E85535001A52F1 /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				FC4031CA21E4390600610E42 /* Utils */,
 				FC4031D521E4726A00610E42 /* Models */,
 				FC4ADAF421E22AF2004CE8CA /* Assets.xcassets */,
+				FCF038CD21E8542B001A52F1 /* RestaurantCell.xib */,
 				FC4ADAF621E22AF2004CE8CA /* LaunchScreen.storyboard */,
 				FC4ADAF921E22AF2004CE8CA /* Info.plist */,
 				FC4ADAF121E22AF1004CE8CA /* FoodDelivery.xcdatamodeld */,
@@ -163,7 +166,7 @@
 			children = (
 				FC4ADB0521E22C12004CE8CA /* Colors.swift */,
 				FCD30C6821E2EC370000BC76 /* RoundedButton.swift */,
-				FC471F4121E718F100B70A6F /* RestaurantCell.swift */,
+				FCF038CF21E85535001A52F1 /* RestaurantCell.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC4ADAF821E22AF2004CE8CA /* LaunchScreen.storyboard in Resources */,
+				FCF038CE21E8542B001A52F1 /* RestaurantCell.xib in Resources */,
 				FC4ADAF521E22AF2004CE8CA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,7 +347,7 @@
 				FC4031D721E473A300610E42 /* Place.swift in Sources */,
 				FC4ADB0A21E22FB7004CE8CA /* UIViewController+HideKeyboard.swift in Sources */,
 				FCE18D1D21E377FC007EDD64 /* NetworkManager.swift in Sources */,
-				FC471F4221E718F100B70A6F /* RestaurantCell.swift in Sources */,
+				FCF038D021E85535001A52F1 /* RestaurantCell.swift in Sources */,
 				FC4031D421E46FBF00610E42 /* PlacesViewController.swift in Sources */,
 				FC215EB921E59B370010ED42 /* LocationHelper.swift in Sources */,
 				FCD30C6921E2EC370000BC76 /* RoundedButton.swift in Sources */,
