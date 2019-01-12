@@ -20,11 +20,16 @@ class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         
         let placesIcon = UIImage(named: "places")!.withRenderingMode(.alwaysTemplate)
-        
         let placesItem = UITabBarItem(title: "Places", image: placesIcon, tag: 111)
         let placesController = PlacesViewController()
         placesController.tabBarItem = placesItem
-        let controllers = [placesController]
+        
+        let previousIcon = UIImage(named: "receipt")!.withRenderingMode(.alwaysTemplate)
+        let previousItem = UITabBarItem(title: "Previous", image: previousIcon, tag: 112)
+        let previousController = PreviousOrdersController()
+        previousController.tabBarItem = previousItem
+        
+        let controllers = [placesController, previousController]
         self.viewControllers = controllers
         
         self.tabBar.tintColor = UIColor.black

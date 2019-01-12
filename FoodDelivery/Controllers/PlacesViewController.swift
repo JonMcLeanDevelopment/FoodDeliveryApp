@@ -123,7 +123,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell*/
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RestaurantCell
-        cell.placeImageView.image = UIImage(named: "logo")!
+        cell.placeImageView.image = UIImage(named: "burger")!
         cell.nameLabel.text = placesArray[indexPath.row].name
         cell.deliveryTimeLabel.text = "Idk"
         
