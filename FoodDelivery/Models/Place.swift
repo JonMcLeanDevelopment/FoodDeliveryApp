@@ -16,14 +16,18 @@ class Place {
     var uniqueId: String
     var countryCode: String
     var state: String
+    var averageRating: Double
+    var ratingCount: Int
     
-    required init(name: String, latitude: Double, longitude: Double, uniqueId: String, countryCode: String, state: String) {
+    required init(name: String, latitude: Double, longitude: Double, uniqueId: String, countryCode: String, state: String, averageRating: Double, ratingCount: Int) {
         self.name = name
         self.latitude = latitude
         self.longitude = longitude
         self.uniqueId = uniqueId
         self.countryCode = countryCode
         self.state = state
+        self.averageRating = averageRating
+        self.ratingCount = ratingCount
     }
     
 }

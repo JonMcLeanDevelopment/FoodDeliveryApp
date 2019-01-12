@@ -29,8 +29,15 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delivery Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNG-dg-NYL">
-                        <rect key="frame" x="16" y="238" width="343" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delivery Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNG-dg-NYL">
+                        <rect key="frame" x="219" y="238" width="140" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ratings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scZ-H7-WtU">
+                        <rect key="frame" x="16" y="238" width="195" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -42,6 +49,7 @@
                 <outlet property="deliveryTimeLabel" destination="hNG-dg-NYL" id="KZw-rA-gXO"/>
                 <outlet property="nameLabel" destination="1m7-es-QxR" id="DVc-ER-LkM"/>
                 <outlet property="placeImageView" destination="XSy-Rk-Uao" id="EQW-rD-IBh"/>
+                <outlet property="ratingLabel" destination="scZ-H7-WtU" id="90Q-DX-zjw"/>
             </connections>
             <point key="canvasLocation" x="701.60000000000002" y="-111.54422788605699"/>
         </tableViewCell>

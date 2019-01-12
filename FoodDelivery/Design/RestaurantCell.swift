@@ -13,6 +13,7 @@ class RestaurantCell: UITableViewCell {
     @IBOutlet var placeImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var deliveryTimeLabel: UILabel!
+    @IBOutlet var ratingLabel: UILabel!
     
     
     

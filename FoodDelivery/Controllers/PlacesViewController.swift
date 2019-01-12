@@ -126,6 +126,16 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.placeImageView.image = UIImage(named: "logo")!
         cell.nameLabel.text = placesArray[indexPath.row].name
         cell.deliveryTimeLabel.text = "Idk"
+        
+        let rating = placesArray[indexPath.row].averageRating
+        let count = placesArray[indexPath.row].ratingCount
+        
+        if(rating == -1 || count == 0) {
+            cell.ratingLabel.text = "No ratings"
+        }else {
+            cell.ratingLabel.text = "\(rating) ⭐️"
+        }
+        
         return cell
     }
     
@@ -238,7 +248,6 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         let data = dic!["data"] as! Array<Any>
-        print(data)
         
         for i in data {
             let d = i as! Dictionary<String, Any>
@@ -249,9 +258,42 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let latitude = d["latitude"] as! Double
             let uuid = d["uuid"] as! String
             
-            let place = Place(name: name, latitude: latitude, longitude: longitude, uniqueId: uuid, countryCode: self.countryCode, state: self.stateCode)
-            self.placesArray.append(place)
-            self.tableView.reloadData()
+            self.network.getAverageRatings(placeUUID: uuid) { (response) in
+                let averageJson = JSON(parseJSON: response as! String)
+                
+                if averageJson == nil {
+                    self.serverError = true
+                    self.tableView.reloadData()
+                    return;
+                }
+                
+                let averageDic = averageJson.dictionaryObject
+                let code = averageDic!["code"] as! Int
+                
+                print(averageDic)
+                
+                var rating: Double = 0
+                var count = 0
+                
+                if code == 441 {
+                    print("441")
+                    return;
+                }else if code == 442 {
+                    count = 0
+                    rating = -1
+                }else if code != 200 {
+                    self.serverError = true
+                    self.tableView.reloadData()
+                    return;
+                }else {
+                    count = averageDic!["count"] as! Int
+                    rating = averageDic!["average"] as! Double
+                }
+                
+                let place = Place(name: name, latitude: latitude, longitude: longitude, uniqueId: uuid, countryCode: self.countryCode, state: self.stateCode, averageRating: rating, ratingCount: count)
+                self.placesArray.append(place)
+                self.tableView.reloadData()
+            }
         }
         
     }

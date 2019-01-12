@@ -56,4 +56,14 @@ class NetworkManager {
         }
     }
     
+    func getAverageRatings(placeUUID: String, completionHandler: @escaping NetworkResponse) {
+        let url = baseUrl + "rating/average"
+        let params: Parameters = ["placeUUID": placeUUID]
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseString { (response) in
+            if let json = response.result.value {
+                completionHandler(json)
+            }
+        }
+    }
+    
 }
