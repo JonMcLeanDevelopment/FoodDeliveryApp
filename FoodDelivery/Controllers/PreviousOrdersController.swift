@@ -14,6 +14,7 @@ class PreviousOrdersController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

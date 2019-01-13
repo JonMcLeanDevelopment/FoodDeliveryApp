@@ -13,6 +13,7 @@ import CoreLocation
 class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     var tableView: UITableView = UITableView()
+    let refreshControl: UIRefreshControl = UIRefreshControl()
     
     var placesArray: Array<Place> = []
     
@@ -41,12 +42,15 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.view.backgroundColor = UIColor.white
         self.locationManager.distanceFilter = 20
         
+        refreshControl.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Loading places", attributes: nil)
         
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height - (self.navigationController!.navigationBar.bounds.height + self.tabBarController!.tabBar.bounds.height)))
         tableView.backgroundColor = UIColor.white
         tableView.register(UINib(nibName: "RestaurantCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.refreshControl = refreshControl
         self.view.addSubview(tableView)
     }
     
@@ -55,14 +59,19 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         layoutViews()
         self.title = "Places"
         self.tabBarController?.title = "Places"
+        
+        self.locationManager.startUpdatingLocation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.hidesBackButton = true
-        
-        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.locationManager.stopUpdatingLocation()
     }
     
     func layoutViews() {
@@ -143,6 +152,10 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return 312
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         print(locations[0].coordinate)
@@ -151,6 +164,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             lastLoadLocation = locations[0]
             
             geocoder.reverseGeocodeLocation(locations[0]) { (placemarks, error) in
+                self.refreshControl.beginRefreshing()
                 self.processGeocode(placemarks: placemarks, error: error)
                 self.network.getPlaces(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude, countryCode: self.countryCode, state: self.stateCode) { (response) in
                     print(response)
@@ -173,6 +187,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if(distance > 0.5) { // greater than 500m difference
                 
                 geocoder.reverseGeocodeLocation(locations[0]) { (placemarks, error) in
+                    self.refreshControl.beginRefreshing()
                     self.processGeocode(placemarks: placemarks, error: error)
                     print("update")
                     self.lastLoadLocation = locations[0]
@@ -231,6 +246,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if json == nil {
             self.serverError = true
             self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
             return;
         }
         
@@ -240,10 +256,12 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if code == 421 {
             self.noData = true
             self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
             return;
         }else if code != 200 {
             self.serverError = true
             self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
             return
         }
         
@@ -264,6 +282,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 if averageJson == nil {
                     self.serverError = true
                     self.tableView.reloadData()
+                    self.refreshControl.endRefreshing()
                     return;
                 }
                 
@@ -277,6 +296,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 if code == 441 {
                     print("441")
+                    self.refreshControl.endRefreshing()
                     return;
                 }else if code == 442 {
                     count = 0
@@ -284,6 +304,7 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }else if code != 200 {
                     self.serverError = true
                     self.tableView.reloadData()
+                    self.refreshControl.endRefreshing()
                     return;
                 }else {
                     count = averageDic!["count"] as! Int
@@ -293,7 +314,21 @@ class PlacesViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let place = Place(name: name, latitude: latitude, longitude: longitude, uniqueId: uuid, countryCode: self.countryCode, state: self.stateCode, averageRating: rating, ratingCount: count)
                 self.placesArray.append(place)
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
+        }
+        
+    }
+    
+    @objc func pullToRefresh() {
+        print("Pull to refresh")
+        
+        if lastLoadLocation == nil {
+            return;
+        }
+        
+        network.getPlaces(latitude: lastLoadLocation!.coordinate.latitude, longitude: lastLoadLocation!.coordinate.longitude, countryCode: self.countryCode, state: self.stateCode) { (response) in
+            self.updateData(response: response as! String)
         }
         
     }

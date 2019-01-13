@@ -19,6 +19,8 @@ class RestaurantCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        placeImageView.layer.cornerRadius = 3.0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
